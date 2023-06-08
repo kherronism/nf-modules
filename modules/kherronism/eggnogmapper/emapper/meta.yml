@@ -1,18 +1,16 @@
-name: eggnogmapper-emapper
+name: eggnoggmapper_emapper
 description: |
-  Search for orthologous proteins, and annotate functional domains and
-    functional description based on orthology.
+     Orthology-based bulk functional annotation of novel sequences using the EggNOG-database
 
 keywords:
   - genome
   - functional-annotation
   - orthology
-  - protein
-  - domain
+  - proteins
 
 tools:
   - eggnog-mapper:
-      description: "EggNOG-mapper is a tool for genome-wide functional annotation through orthology assignment
+      description: "EggNOG-mapper is a tool for genome-wide functional annotation through orthology assignment"
       homepage: "http://eggnog-mapper.embl.de/"
       documentation: "https://github.com/jhcepas/eggnog-mapper/wiki"
       tool_dev_url: "https://github.com/eggnogdb/eggnog-mapper"
@@ -20,25 +18,44 @@ tools:
       licence: ["AGPL-3.0"]
 
 input:
-  - fasta:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - assembly:
       type: file
-      description: Input fasta file containing query sequences
-      pattern: "*.{fa,fasta}"
+      description: Genome assembly
+      pattern: "*.{fasta,fa,fas,faa,fna}"
 
 output:
-  - annotations:
-        type: file
-        description: File containing functional annotations
-        pattern: "*.{annotations.txt}"
+  - search_hits:
+      type: file
+      description: Search results file, from HMMER, Diamond or MMSeqs2
+      pattern: "*.{emapper.hits}"
   - seed_orthologs:
-        type: file
-        description: File containing seed orthologs
-        pattern: "*.{seed_orthologs.txt}"
+      type: file
+      description: Parsed search hits file, where each row links a given query to a seed ortholog
+      pattern: "*.{emapper.seed_orthologs}"
+  - annotations:
+      type: file
+      description: Annotation results file, where each row represents the annotation for a given query
+      pattern: "*.{emapper.annotations}"
+  - annotations_excel:
+      type: file
+      description: Excel file containing annotation results, only given with --excel
+      pattern: "*.{emapper.annotations.xlsx}"
+  - orthologs:
+      type: file
+      description: File of list of orthologs found for each query, only given with --report_orthologs
+      pattern: "*.{emapper.orthologs}"
+  - pred_cds:
+      type: file
+      description: File of predicted CDS, only given with --itype genome or --itype metagenome
   - decorated_gff:
-        type: file
-        description: File containing decorated gff
-        pattern: "*.{decorated.gff}"
-
+      type: file
+      description:
+      pattern: "*.{emapper.decorated.gff}"
   - versions:
       type: file
       description: File containing software versions

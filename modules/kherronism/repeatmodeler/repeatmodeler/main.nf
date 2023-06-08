@@ -1,7 +1,8 @@
-process REPEATMODELER {
+process REPEATMODELER_REPEATMODELER {
     tag "$meta.id"
     label 'process_medium'
 
+    conda "bioconda::repeatmodeler=2.0.4"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/repeatmodeler:2.0.4--pl5321hdfd78af_0':
         'quay.io/biocontainers/repeatmodeler:2.0.4--pl5321hdfd78af_0' }"

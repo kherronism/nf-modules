@@ -24,7 +24,7 @@ process BRAKER3 {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def VERSION
+
     """
     braker.pl \\
         --genome ${fasta} \\

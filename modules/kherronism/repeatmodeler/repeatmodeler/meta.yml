@@ -1,0 +1,44 @@
+name: repeatmodeler_repeatmodeler
+description: |
+
+keywords:
+  - genome
+  - annotation
+  - repeats
+
+tools:
+  - repeatmodeler:
+      description: ""
+      homepage: ""
+      documentation: ""
+      tool_dev_url: ""
+      doi: ""
+      licence: [""]
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - fasta:
+      type: file
+      description: Genome assembly
+      pattern: "*.{fasta,fa,fas,faa,fna}"
+
+output:
+  - rm_fasta:
+      type: file
+      description: Gene transfer format file as output by BRAKER3
+      pattern: "*.{-families.fa}"
+  - rm_stk:
+      type:
+      description: ""
+      pattern: "*.{stk}"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@kherronism"
