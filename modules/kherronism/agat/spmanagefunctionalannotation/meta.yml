@@ -1,0 +1,55 @@
+name: agat_spmanagefunctionalannotation
+description: |
+    Uses the AGAT tool sp_manage_functional_annotation to merge functional
+    annotations from multiple sources
+keywords:
+  - genome
+  - gff
+  - gtf
+
+tools:
+  - agat:
+      description: "AGAT is a toolkit for manipulation and getting information from GFF/GTF files"
+      homepage: "https://github.com/NBISweden/AGAT"
+      documentation: "https://agat.readthedocs.io/en/latest/"
+      tool_dev_url: "https://github.com/NBISweden/AGAT"
+      doi: "10.5281/zenodo.3552717"
+      licence: ["GPL v3"]
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - gff:
+      type: file
+      description: Annotation file in GTF/GFF format
+      pattern: "*.{gff, gtf, gff3}"
+  - interproscan_tsv:
+      type: file
+      description: InterProScan TSV file
+      pattern: "*.{tsv}"
+  - blast_tbl:
+      type: file
+      description: Input blast (outfmt 6 = tabular) file with annotation features to attach to provided gtf/gff file
+  - blast_db_fasta:
+      type: file
+      description: FASTA file used to create the BLAST database
+
+output:
+  - gff:
+      type: file
+      description: Merged annotation file in GFF3 format
+      pattern: "*.{gff}"
+  - tsv:
+      type: file
+      description: Merged annotation file in TSV format
+      pattern: "*.{tsv}"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@kherronism"
