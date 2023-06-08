@@ -1,4 +1,4 @@
-# ![nf-core/modules](docs/images/nfcore-modules_logo.png)
+# ![kherronism/nf-modules](docs/images/kherronism-nf-modules_logo_darkbg.png)
 
 [![Nextflow](https://img.shields.io/badge/nextflow%20DSL2-%E2%89%A521.10.3-23aa62.svg?labelColor=000000)](https://www.nextflow.io/)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
@@ -6,150 +6,69 @@
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
 
 ![GitHub Actions Coda Linting](https://github.com/nf-core/modules/workflows/Code%20Linting/badge.svg)
-[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23modules-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/modules)
-
-[![Follow on Twitter](http://img.shields.io/badge/twitter-%40nf__core-1DA1F2?labelColor=000000&logo=twitter)](https://twitter.com/nf_core)
-[![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
 
 > THIS REPOSITORY IS UNDER ACTIVE DEVELOPMENT. SYNTAX, ORGANISATION AND LAYOUT MAY CHANGE WITHOUT NOTICE!
 
-A repository for hosting [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) module files containing tool-specific process definitions and their associated documentation.
+A repository for hosting locally-developed [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) module files and subworkflows containing tool-specific process definitions and their associated documentation.
 
 ## Table of contents
 
-- [Using existing modules](#using-existing-modules)
-- [Adding new modules](#adding-new-modules)
-- [Help](#help)
-- [Citation](#citation)
+- [Summary of modules in this repository](#summary-of-modules-in-this-repository)
+- [Using modules in this repository](#using-modules-in-this-repository)
+- [Citations](#citations)
 
-## Using existing modules
+## Summary of modules in this repository
 
-The module files hosted in this repository define a set of processes for software tools such as `fastqc`, `bwa`, `samtools` etc. This allows you to share and add common functionality across multiple pipelines in a modular fashion.
+The module files hosted in this repository define a set of processes for bioinformatic tools and locally developed scripts. This serves as a hub for sharing and adding common functionality across multiple pipelines in a modular fashion.
 
-We have written a helper command in the `nf-core/tools` package that uses the GitHub API to obtain the relevant information for the module files present in the [`modules/`](modules/) directory of this repository. This includes using `git` commit hashes to track changes for reproducibility purposes, and to download and install all of the relevant module files.
+| tool/subtool                          | status  | comment                                                      |
+| ------------------------------------- | ------- | ------------------------------------------------------------ |
+| agat/spkeeplongestisoform             | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| agat/spmanagefunctionalannotations    | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| braker3                               | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| cafe5                                 | Planned |                                                              |
+| eggnogmapper/emapper                  | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| iqtree                                | Planned |                                                              |
+| macse                                 | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| orthofinder                           | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| picard/collectalignmentsummarymetrics | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| repeatmodeler/builddatabase           | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| repeatmodeler/repeatmodeler           | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| repeatmasker                          | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
 
-1. Install the latest version of [`nf-core/tools`](https://github.com/nf-core/tools#installation) (`>=2.0`)
-2. List the available modules:
+## Using modules in this repository
 
-   ```console
-   $ nf-core modules list remote
+The helper command in the `nf-core/tools` package uses the GitHub API to obtain the relevant information for the module files present in the [`modules/`](modules/) directory of the [nf-core/modules](https://github.com/nf-core/tools) repository. This includes using `git` commit hashes to track changes for reproducibility purposes, and to download and install all of the relevant module files.
 
-                                         ,--./,-.
-         ___     __   __   __   ___     /,-._.--~\
-   |\ | |__  __ /  ` /  \ |__) |__         }  {
-   | \| |       \__, \__/ |  \ |___     \`-._,-`-,
-                                         `._,._,'
+To install modules from this repository (and any other custom respository), the modules supercommand in `nf-core/tools`can be used with the following two flags:
 
-   nf-core/tools version 2.0
+- `--git-remote <git remote url>`: Specify the repository from which the modules should be fetched as a git URL. Defaults to the github repository of `nf-core/modules`.
+- `--branch <branch name>`: Specify the branch from which the modules should be fetched. Defaults to the default branch of your repository.
 
-   INFO     Modules available from nf-core/modules (master):                       pipeline_modules.py:164
+For instance, if you want to install the `repeatmasker` module from this repository, you can use the following command:
 
-   ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-   ┃ Module Name                    ┃
-   ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-   │ bandage/image                  │
-   │ bcftools/consensus             │
-   │ bcftools/filter                │
-   │ bcftools/isec                  │
-   ..truncated..
-   ```
+```terminal
+nf-core modules --git-remote git@github.com:kherronism/nf-modules.git install repeatmasker
+```
 
-3. Install the module in your pipeline directory:
+> **Note**
+> If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how
+> to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline)
+> with `-profile test` before running workflows on actual data.
+> For more information on using nf-core modules, please refer to [nf-core/modules](https://github.com/nf-core/modules).
+> For more information on installing modules from custom repositories, please refer to [nf-core/tools](https://github.com/nf-core/tools#custom-remote-modules).
 
-   ```console
-   $ nf-core modules install fastqc
-
-                                         ,--./,-.
-         ___     __   __   __   ___     /,-._.--~\
-   |\ | |__  __ /  ` /  \ |__) |__         }  {
-   | \| |       \__, \__/ |  \ |___     \`-._,-`-,
-                                         `._,._,'
-
-   nf-core/tools version 2.0
-
-   INFO     Installing fastqc                                                      pipeline_modules.py:213
-   INFO     Downloaded 3 files to ./modules/nf-core/modules/fastqc                 pipeline_modules.py:236
-   ```
-
-4. Import the module in your Nextflow script:
-
-   ```nextflow
-   #!/usr/bin/env nextflow
-
-   nextflow.enable.dsl = 2
-
-   include { FASTQC } from './modules/nf-core/modules/fastqc/main'
-   ```
-
-5. Remove the module from the pipeline repository if required:
-
-   ```console
-   $ nf-core modules remove fastqc
-
-                                         ,--./,-.
-         ___     __   __   __   ___     /,-._.--~\
-   |\ | |__  __ /  ` /  \ |__) |__         }  {
-   | \| |       \__, \__/ |  \ |___     \`-._,-`-,
-                                         `._,._,'
-
-   nf-core/tools version 2.0
-
-   INFO     Removing fastqc                                                        pipeline_modules.py:271
-   INFO     Successfully removed fastqc                                            pipeline_modules.py:285
-   ```
-
-6. Check that a locally installed nf-core module is up-to-date compared to the one hosted in this repo:
-
-   ```console
-   $ nf-core modules lint fastqc
-
-                                         ,--./,-.
-         ___     __   __   __   ___     /,-._.--~\
-   |\ | |__  __ /  ` /  \ |__) |__         }  {
-   | \| |       \__, \__/ |  \ |___     \`-._,-`-,
-                                         `._,._,'
-
-   nf-core/tools version 2.0
-
-   INFO     Linting pipeline: .                                                    lint.py:104
-   INFO     Linting module: fastqc                                                 lint.py:106
-
-   ╭─────────────────────────────────────────────────────────────────────────────────╮
-   │ [!] 1 Test Warning                                                              │
-   ╰─────────────────────────────────────────────────────────────────────────────────╯
-   ╭──────────────┬───────────────────────────────┬──────────────────────────────────╮
-   │ Module name  │ Test message                  │ File path                        │
-   ├──────────────┼───────────────────────────────┼──────────────────────────────────┤
-   │ fastqc       │ Local copy of module outdated │ modules/nf-core/modules/fastqc/  │
-   ╰──────────────┴────────────────────────────── ┴──────────────────────────────────╯
-   ╭──────────────────────╮
-   │ LINT RESULTS SUMMARY │
-   ├──────────────────────┤
-   │ [✔]  15 Tests Passed │
-   │ [!]   1 Test Warning │
-   │ [✗]   0 Test Failed  │
-   ╰──────────────────────╯
-   ```
-
-## Adding new modules
-
-If you wish to contribute a new module, please see the documentation on the [nf-core website](https://nf-co.re/developers/modules#writing-a-new-module-reference).
-
-> Please be kind to our code reviewers and submit one pull request per module :)
-
-## Help
-
-For further information or help, don't hesitate to get in touch on [Slack `#modules` channel](https://nfcore.slack.com/channels/modules) (you can join with [this invite](https://nf-co.re/join/slack)).
-
-## Citation
-
-If you use the module files in this repository for your analysis please you can cite the `nf-core` publication as follows:
+## Citations
+This repository uses code and infrastructure developed and maintained by the [nf-core](https://nf-co.re) community, reused here under the [MIT license](https://github.com/nf-core/tools/blob/master/LICENSE).
 
 > **The nf-core framework for community-curated bioinformatics pipelines.**
 >
 > Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.
 >
 > _Nat Biotechnol._ 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).
+
+> **Note**
+> Many modules in this repository define processes for pre-exisiting bioinformatic tools - please remember to cite the originial sources. The [`CITATIONS.md`](CIATIONS.md) file contains an exhaustive list of references to help with this.
 
 <!---
 
