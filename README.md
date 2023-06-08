@@ -40,10 +40,10 @@ The module files hosted in this repository define a set of processes for bioinfo
 
 The helper command in the `nf-core/tools` package uses the GitHub API to obtain the relevant information for the module files present in the [`modules/`](modules/) directory of the [nf-core/modules](https://github.com/nf-core/tools) repository. This includes using `git` commit hashes to track changes for reproducibility purposes, and to download and install all of the relevant module files.
 
-To install modules from this repository (and any other custom respository), the modules supercommand in `nf-core/tools`can be used with the following two flags:
+To install modules from this repository (and any other custom repository), the modules supercommand in `nf-core/tools`can be used with the following two flags:
 
 - `--git-remote <git remote url>`: Specify the repository from which the modules should be fetched as a git URL. Defaults to the github repository of `nf-core/modules`.
-- `--branch <branch name>`: Specify the branch from which the modules should be fetched. Defaults to the default branch of your repository.
+- `--branch <branch name>`: Specify the branch from which the modules should be fetched. Defaults to the default branch of the repository.
 
 For instance, if you want to install the `repeatmasker` module from this repository, you can use the following command:
 
