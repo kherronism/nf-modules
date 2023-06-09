@@ -2,10 +2,10 @@ process ORTHOFINDER {
     tag "$meta.id"
     label 'process_medium'
 
-    conda 'bioconda::orthofinder=2.5.4'
+    conda 'bioconda::orthofinder=2.5.5'
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/orthofinder:2.5.4--hdfd78af_0':
-        'davidemms/orthofinder:v.2.5.4' }"
+        'https://depot.galaxyproject.org/singularity/orthofinder:2.5.5--hdfd78af_1':
+        'biocontainers/orthofinder:2.5.5--hdfd78af_1' }"
 
     input:
     path(proteins)
@@ -20,7 +20,7 @@ process ORTHOFINDER {
     task.ext.when == null || task.ext.when
 
     script:
-    def VERSION = '2.5.4'  // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
+    def VERSION = '2.5.5'  // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     """
     orthofinder \\
         -t ${task.cpus} \\

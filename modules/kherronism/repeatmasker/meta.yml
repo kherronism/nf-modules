@@ -1,5 +1,6 @@
-name: repeatmodeler_repeatmodeler
+name: repeatmasker
 description: |
+  Screening DNA sequences for interspersed repeats and low complexity DNA sequences.
 
 keywords:
   - genome
@@ -7,13 +8,14 @@ keywords:
   - repeats
 
 tools:
-  - repeatmodeler:
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: [""]
+  - repeatmasker:
+      description: "RepeatMasker is a program that screens DNA sequences for interspersed
+      repeats and low complexity DNA sequences."
+      homepage: "https://www.repeatmasker.org/"
+      documentation: "https://www.repeatmasker.org/webrepeatmaskerhelp.html"
+      tool_dev_url: "https://github.com/rmhubley/RepeatMasker"
+      doi: "10.1073/pnas.1921046117"
+      licence: ["Open Software License v. 2.1"]
 
 input:
   - meta:

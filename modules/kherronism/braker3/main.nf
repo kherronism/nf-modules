@@ -5,7 +5,7 @@ process BRAKER3 {
     conda "bioconda::braker3=3.0.3"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/braker3:3.0.3--hdfd78af_0':
-        'quay.io/biocontainers/braker3:3.0.3--hdfd78af_0' }"
+        'biocontainers/braker3:3.0.3--hdfd78af_0' }"
 
     input:
     tuple val(meta), path(fasta)

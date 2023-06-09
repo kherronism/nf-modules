@@ -37,6 +37,7 @@
 -
 - [RepeatModeler](https://www.repeatmasker.org/RepeatModeler/)
   > Smit AFA and Hubley R. RepeatModeler Open-1.0.2008-2015 http://www.repeatmasker.org.
+  > See [here](https://www.pnas.org/doi/10.1073/pnas.1921046117?cookieSet=1)
 
 ## Software packaging/containerisation tools
 

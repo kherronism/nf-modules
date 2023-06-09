@@ -2,9 +2,10 @@ process REPEATMASKER {
     tag "$meta.id"
     label 'process_medium'
 
+    conda "bioconda::repeatmasker=4.1.5"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/repeatmasker:4.1.5--pl5321hdfd78af_0':
-        'quay.io/biocontainers/repeatmasker:4.1.5--pl5321hdfd78af_0' }"
+        'biocontainers/repeatmasker:4.1.5--pl5321hdfd78af_0' }"
 
     input:
     tuple val(meta), path(fasta),
