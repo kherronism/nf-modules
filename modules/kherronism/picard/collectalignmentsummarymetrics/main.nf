@@ -25,10 +25,10 @@ process PICARD_COLLECTALIGNMENTSUMMARYMETRICS {
     """
     picard \\
         CollectAlignmentSummaryMetrics \\
-        $args \\
-        --INPUT $bam \\
-        --OUTPUT ${prefix}.alignment_summary_metrics \\
-        $reference
+        --INPUT ${bam} \\
+        --OUTPUT ${prefix}.txt \\
+        ${reference}
+        ${args}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

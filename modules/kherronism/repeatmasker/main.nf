@@ -1,6 +1,6 @@
 process REPEATMASKER {
     tag "$meta.id"
-    label 'process_medium'
+    label 'process_high'
 
     conda "bioconda::repeatmasker=4.1.5"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
@@ -9,15 +9,15 @@ process REPEATMASKER {
 
     input:
     tuple val(meta), path(fasta),
-    tuple val(meta), path(families_fasta)
+    tuple val(meta), path(lib)
 
     output:
-    tuple val(meta), path("${meta.id}/*.fna.masked") , emit: assembly_softmasked
-    tuple val(meta), path("${meta.id}/*.fna.align")  , emit: repeatmasker_align
-    tuple val(meta), path("${meta.id}/*.fna.out")    , emit: repeatmasker_out
-    tuple val(meta), path("${meta.id}/*.fna.out.gff"), emit: repeatmasker_out_gff
-    tuple val(meta), path("${meta.id}/*.fna.tbl")    , emit: repeatmasker_tbl
-    tuple val(meta), path("${meta.id}/*.fna.cat.gz") , emit: repeatmasker_cat_gz
+    tuple val(meta), path("${meta.id}/*.fna.masked") , emit: fna_masked
+    tuple val(meta), path("${meta.id}/*.fna.align")  , emit: fna_align
+    tuple val(meta), path("${meta.id}/*.fna.out")    , emit: fna_out
+    tuple val(meta), path("${meta.id}/*.fna.out.gff"), emit: fna_out_gff
+    tuple val(meta), path("${meta.id}/*.fna.tbl")    , emit: fna_tbl
+    tuple val(meta), path("${meta.id}/*.fna.cat.gz") , emit: fna_cat_gz
     path "versions.yml"                              , emit: versions
 
     when:
@@ -29,7 +29,7 @@ process REPEATMASKER {
     def VERSION = '4.1.5'  // WARN: Version information not provided by tool on CLI. Please update this string when bumping container versions.
     """
     RepeatMasker \\
-        -lib ${families_fasta} \\
+        -lib ${lib} \\
         -pa ${task.cpus} \\
         -dir ${prefix} \\
         ${args} \\
