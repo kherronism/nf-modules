@@ -21,7 +21,7 @@ process PICARD_COLLECTALIGNMENTSUMMARYMETRICS {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}.AlignmentSummaryMetric.metrics"
-    def reference = fasta ? "--REFERENCE_SEQUENCE ${fasta}" : ""
+    def reference = fasta ?: "--REFERENCE_SEQUENCE ${fasta}" : ""
     """
     picard \\
         CollectAlignmentSummaryMetrics \\
