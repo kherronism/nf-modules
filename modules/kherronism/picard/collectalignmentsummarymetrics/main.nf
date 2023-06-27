@@ -35,3 +35,4 @@ process PICARD_COLLECTALIGNMENTSUMMARYMETRICS {
         picard: \$(echo \$(picard CollectRnaSeqMetrics --version 2>&1) | grep -o 'Version:.*' | cut -f2- -d:)
     END_VERSIONS
     """
+}
