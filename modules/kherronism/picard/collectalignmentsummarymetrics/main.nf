@@ -12,8 +12,8 @@ process PICARD_COLLECTALIGNMENTSUMMARYMETRICS {
     path fasta
 
     output:
-    tuple val(meta), path("*.alignment_summary_metrics"), emit: metrics
-    path  "versions.yml"                                , emit: versions
+    tuple val(meta), path("*.txt"), emit: metrics
+    path  "versions.yml"          , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
