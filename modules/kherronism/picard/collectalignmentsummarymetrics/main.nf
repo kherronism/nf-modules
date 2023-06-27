@@ -27,7 +27,7 @@ process PICARD_COLLECTALIGNMENTSUMMARYMETRICS {
         CollectAlignmentSummaryMetrics \\
         --INPUT ${bam} \\
         --OUTPUT ${prefix}.txt \\
-        ${reference}
+        ${reference} \\
         ${args}
 
     cat <<-END_VERSIONS > versions.yml
