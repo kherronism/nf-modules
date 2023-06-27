@@ -21,20 +21,20 @@ A repository for hosting locally-developed [Nextflow DSL2](https://www.nextflow.
 
 The module files hosted in this repository define a set of processes for bioinformatic tools and locally developed scripts. This serves as a hub for sharing and adding common functionality across multiple pipelines in a modular fashion.
 
-| tool/subtool                          | status  | comment                                                      |
+| Tool/subtool                          | Status  | Comment                                                      |
 | ------------------------------------- | ------- |--------------------------------------------------------------|
-| agat/spkeeplongestisoform             | WIP     | TODO: Add citation, add tests                                |
-| agat/spmanagefunctionalannotations    | WIP     | TODO: Add citation, add tests                                |
-| braker3                               | WIP     | TODO: Add citation, add tests                                |
+| agat/spkeeplongestisoform             | In progress     | Add citation, add tests                                |
+| agat/spmanagefunctionalannotations    | In progress     | Add citation, add tests                                |
+| braker3                               | In progress     | Add citation, add tests                                |
 | cafe5                                 | Planned |                                                              |
-| eggnogmapper/emapper                  | WIP     | TODO: Add citation, add tests                                |
+| eggnogmapper/emapper                  | In progress     | Add citation, add tests                                |
 | iqtree                                | Planned |                                                              |
-| macse                                 | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
-| orthofinder                           | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
-| picard/collectalignmentsummarymetrics | WIP     | TODO: Add citation, add tests                                |
-| repeatmodeler/builddatabase           | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
-| repeatmodeler/repeatmodeler           | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
-| repeatmasker                          | WIP     | TODO: Clean main.nf, clean meta.yml, add citation, add tests |
+| macse                                 | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
+| orthofinder                           | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
+| picard/collectalignmentsummarymetrics | In progress     | Add citation, add tests                                |
+| repeatmodeler/builddatabase           | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
+| repeatmodeler/repeatmodeler           | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
+| repeatmasker                          | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
 
 ## Using modules in this repository
 
