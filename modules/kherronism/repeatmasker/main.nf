@@ -12,13 +12,13 @@ process REPEATMASKER {
     tuple val(meta), path(lib)
 
     output:
-    tuple val(meta), path("*.fna.masked") , emit: fna_masked
-    tuple val(meta), path("*.fna.out")    , emit: fna_out
-    tuple val(meta), path("*.fna.tbl")    , emit: fna_tbl
-    tuple val(meta), path("*.fna.cat.gz") , emit: fna_cat_gz
-    tuple val(meta), path("*.fna.out.gff"), emit: fna_out_gff, optional: true
-    tuple val(meta), path("*.fna.align")  , emit: fna_align  , optional: true
-    path "versions.yml"                   , emit: versions                          , emit: versions
+    tuple val(meta), path("${meta.id}/*.f*a.masked") , emit: fasta_masked
+    tuple val(meta), path("${meta.id}/*.f*a.out")    , emit: fasta_out
+    tuple val(meta), path("${meta.id}/*.f*a.tbl")    , emit: fasta_tbl
+    tuple val(meta), path("${meta.id}/*.f*a.cat.gz") , emit: fasta_cat_gz , optional: true
+    tuple val(meta), path("${meta.id}/*.f*a.out.gff"), emit: fasta_out_gff, optional: true
+    tuple val(meta), path("${meta.id}/*.f*a.align")  , emit: fasta_align  , optional: true
+    path "versions.yml"                   , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
