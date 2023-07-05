@@ -13,7 +13,7 @@ process REPEATMODELER {
     output:
     tuple val(meta), path("*-families.fa") , emit: rm_families_fa
     tuple val(meta), path("*-families.stk"), emit: rm_families_stk
-    tuple val(meta), path("${prefix}*")    , emit: rm_db
+    tuple val(meta), path("RM_*/*")        , emit: rm_dir
     tuple val(meta), path("*-rmod.log")    , emit: rm_log
     path "versions.yml"                    , emit: versions
 

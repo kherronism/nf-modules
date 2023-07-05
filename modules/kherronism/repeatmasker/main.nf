@@ -8,16 +8,16 @@ process REPEATMASKER {
         'biocontainers/repeatmasker:4.1.5--pl5321hdfd78af_0' }"
 
     input:
-    tuple val(meta), path(fasta),
+    tuple val(meta), path(fasta)
     tuple val(meta), path(lib)
 
     output:
     tuple val(meta), path("${meta.id}/*.fna.masked") , emit: fna_masked
-    tuple val(meta), path("${meta.id}/*.fna.align")  , emit: fna_align
     tuple val(meta), path("${meta.id}/*.fna.out")    , emit: fna_out
-    tuple val(meta), path("${meta.id}/*.fna.out.gff"), emit: fna_out_gff
     tuple val(meta), path("${meta.id}/*.fna.tbl")    , emit: fna_tbl
     tuple val(meta), path("${meta.id}/*.fna.cat.gz") , emit: fna_cat_gz
+    tuple val(meta), path("${meta.id}/*.fna.out.gff"), emit: fna_out_gff, optional: true
+    tuple val(meta), path("${meta.id}/*.fna.align")  , emit: fna_align  , optional: true
     path "versions.yml"                              , emit: versions
 
     when:
