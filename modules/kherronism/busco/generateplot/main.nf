@@ -11,7 +11,8 @@ process BUSCO_GENERATEPLOT {
     tuple val(meta), path('BUSCO_summaries/*')
 
     output:
-    tuple val(meta), path("*.txt"), emit: metrics
+    tuple val(meta), path("*.png"), emit: png
+    tuple val(meta), path("*.R")  , emit: r
     path  "versions.yml"          , emit: versions
 
     when:
@@ -21,8 +22,8 @@ process BUSCO_GENERATEPLOT {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    python3 scripts/generate_plot.py \\
-        --wd BUSCO_summaries \\
+    generate_plot.py \\
+        --working_directory BUSCO_summaries \\
         $args
 
     cat <<-END_VERSIONS > versions.yml
