@@ -11,8 +11,8 @@ process BUSCO_GENERATEPLOT {
     tuple val(meta), path('BUSCO_summaries/*')
 
     output:
-    tuple val(meta), path("*.png"), emit: png
-    tuple val(meta), path("*.R")  , emit: r
+    tuple val(meta), path("BUSCO_summaries/*.png"), emit: png
+    tuple val(meta), path("BUSCO_summaries/*.R")  , emit: r
     path  "versions.yml"          , emit: versions
 
     when:
