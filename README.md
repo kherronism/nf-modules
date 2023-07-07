@@ -21,20 +21,16 @@ A repository for hosting locally-developed [Nextflow DSL2](https://www.nextflow.
 
 The module files hosted in this repository define a set of processes for bioinformatic tools and locally developed scripts. This serves as a hub for sharing and adding common functionality across multiple pipelines in a modular fashion.
 
-| Tool/subtool                          | Status  | Comment                                                      |
-| ------------------------------------- | ------- |--------------------------------------------------------------|
-| agat/spkeeplongestisoform             | In progress     | Add citation, add tests                                |
-| agat/spmanagefunctionalannotations    | In progress     | Add citation, add tests                                |
-| braker3                               | In progress     | Add citation, add tests                                |
-| cafe5                                 | Planned |                                                              |
-| eggnogmapper/emapper                  | In progress     | Add citation, add tests                                |
-| iqtree                                | Planned |                                                              |
-| macse                                 | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
-| orthofinder                           | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
-| picard/collectalignmentsummarymetrics | In progress     | Add citation, add tests                                |
-| repeatmodeler/builddatabase           | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
-| repeatmodeler/repeatmodeler           | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
-| repeatmasker                          | In progress     | Clean main.nf, clean meta.yml, add citation, add tests |
+- agat/spkeeplongestisoform
+- agat/spmanagefunctionalannotations
+- braker3
+- busco/generateplot
+- eggnogmapper/emapper
+- macse
+- orthofinder
+- picard/collectalignmentsummarymetrics
+- repeatmodeler
+- repeatmasker
 
 ## Using modules in this repository
 
