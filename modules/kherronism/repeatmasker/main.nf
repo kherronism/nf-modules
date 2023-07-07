@@ -18,7 +18,7 @@ process REPEATMASKER {
     tuple val(meta), path("${meta.id}/*.f*a.cat.gz") , emit: fasta_cat_gz , optional: true
     tuple val(meta), path("${meta.id}/*.f*a.out.gff"), emit: fasta_out_gff, optional: true
     tuple val(meta), path("${meta.id}/*.f*a.align")  , emit: fasta_align  , optional: true
-    path "versions.yml"                   , emit: versions
+    path "versions.yml"                              , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
