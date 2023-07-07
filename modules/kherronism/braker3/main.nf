@@ -1,11 +1,11 @@
 process BRAKER3 {
     tag "${meta.id}"
-    label 'process_medium'
+    label 'process_high'
 
     conda "bioconda::braker3=3.0.3"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://teambraker/braker3:v.1.0.3':
-        'teambraker/braker3:v.1.0.3' }"
+        'registry.hub.docker.com/teambraker/braker3:v.1.0.3':
+        'registry.hub.docker.com/teambraker/braker3:v.1.0.3' }"
 
     input:
     tuple val(meta), path(fasta)
@@ -30,12 +30,13 @@ process BRAKER3 {
 
     script:
     def args = task.ext.args ?: ''
-    def prefix = task.ext.prefix ?: "${meta.id}"
-    def hints = hintsfile ? "--hints=${hintsfile}" : ''
-    def bam = bam ? "--bam=${bam}" : ''
+    prefix   = task.ext.prefix ?: "${meta.id}"
+
+    def hints    = hintsfile ? "--hints=${hintsfile}" : ''
+    def bam      = bam ? "--bam=${bam}" : ''
     def proteins = proteins ? "--prot_seq=${proteins}" : ''
     def rna_dirs = rnaseq_sets_dirs ? "--rnaseq_sets_dirs=${rnaseq_sets_dirs}" : ''
-    def rna_ids = rnaseq_sets_ids ? "--rnaseq_sets_ids=${rnaseq_sets_ids}" : ''
+    def rna_ids  = rnaseq_sets_ids ? "--rnaseq_sets_ids=${rnaseq_sets_ids}" : ''
     """
     braker.pl \\
         --genome ${fasta} \\
