@@ -23,7 +23,7 @@ process SEQKIT_FX2TAB {
     """
     seqkit fx2tab \\
         $args \\
-        $reads > '${prefix}.tsv'
+        $fasta > '${prefix}.tsv'
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
