@@ -30,6 +30,7 @@ The module files hosted in this repository define a set of processes for bioinfo
 - picard/collectalignmentsummarymetrics
 - repeatmodeler
 - repeatmasker
+- seqkit/fx2tab
 
 ## Using modules in this repository
 
