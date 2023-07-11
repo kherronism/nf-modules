@@ -1,0 +1,47 @@
+name: seqkit_fx2tab
+description: |
+  Convert FASTA or FASTQ format files to tabular format and provide various information, such as length of sequence and GC content.
+
+keywords:
+  - seqkit
+  - fasta
+  - fastq
+  - stats
+
+tools:
+  - seqkit:
+      description: Cross-platform and ultrafast toolkit for FASTA/Q file manipulation, written by Wei Shen.
+      homepage: https://bioinf.shenwei.me/seqkit/usage/
+      documentation: https://bioinf.shenwei.me/seqkit/usage/
+      tool_dev_url: https://github.com/shenwei356/seqkit/
+      doi: "10.1371/journal.pone.0163962"
+      licence: [ "MIT" ]
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - fasta:
+      type: file
+      description: Either a FASTA or FASTQ file
+      pattern: "*.{fasta,fa,fas,faa,fna,fq,fastq}[.gz]"
+
+output:
+  - rm_db:
+        type: directory
+        description: Captures RepeatModeler species-specific database
+        pattern: "{prefix}*"
+  - stats:
+      type: file
+      description: >
+        Tab-separated output file.
+      pattern: "*.tsv"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@kherronism"

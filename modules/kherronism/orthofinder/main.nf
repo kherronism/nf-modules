@@ -8,12 +8,12 @@ process ORTHOFINDER {
         'biocontainers/orthofinder:2.5.5--hdfd78af_1' }"
 
     input:
-    path(proteins)
+    path("*/tmp_input")
 
     output:
-    path "*/Phylogenetic_Hierarchical_Orthogroups/N0.tsv", emit: n0
-    path "*/WorkingDirectory/Blast*"                     , emit: blasts
-    path "*/WorkingDirectory/SequenceIDs.txt"            , emit: seq_ids
+    path "*OrthoFinder/Phylogenetic_Hierarchical_Orthogroups/N0.tsv", emit: n0
+    path "*OrthoFinder/WorkingDirectory/Blast*"                     , emit: blasts
+    path "*OrthoFinder/WorkingDirectory/SequenceIDs.txt"            , emit: seq_ids
     path "versions.yml"                                  , emit: versions
 
     when:
