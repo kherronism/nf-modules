@@ -8,8 +8,7 @@ process REPEATMASKER {
         'biocontainers/repeatmasker:4.1.5--pl5321hdfd78af_0' }"
 
     input:
-    tuple val(meta), path(fasta)
-    tuple val(meta), path(lib)
+    tuple val(meta), path(fasta), path(lib)
 
     output:
     tuple val(meta), path("${meta.id}/*.f*a.masked") , emit: fasta_masked
