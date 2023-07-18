@@ -23,6 +23,7 @@ The module files hosted in this repository define a set of processes for bioinfo
 
 - agat/spkeeplongestisoform
 - agat/spmanagefunctionalannotations
+- agat/spmanageids
 - braker3
 - eggnogmapper/emapper
 - macse
