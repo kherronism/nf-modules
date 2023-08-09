@@ -8,7 +8,7 @@ process ORTHOFINDER {
         'biocontainers/orthofinder:2.5.5--hdfd78af_1' }"
 
     input:
-    path("*/tmp_input")
+    tuple val(meta), path("proteins/${meta.sci_name}.faa")
 
     output:
     path "*OrthoFinder/Phylogenetic_Hierarchical_Orthogroups/N0.tsv", emit: n0
@@ -25,7 +25,7 @@ process ORTHOFINDER {
     orthofinder \\
         -t ${task.cpus} \\
         -a ${task.cpus} \\
-        -f ${proteins}
+        -f proteins/
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
