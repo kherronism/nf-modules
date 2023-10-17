@@ -11,7 +11,7 @@ process AGAT_SPKEEPLONGESTISOFORM {
     tuple val(meta), path(gff)
 
     output:
-    tuple val(meta), path("*.gff"), emit: longest_isoform_gff
+    tuple val(meta), path("*.gff"), emit: output_gff
     path "versions.yml"           , emit: versions
 
     when:
