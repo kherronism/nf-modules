@@ -28,9 +28,9 @@ input:
       pattern: "*.{gff, gtf, gff3}"
 
 output:
-  - longest_isoform_gff:
+  - output_gff:
       type: file
-      description: Annotation file filtered for longest isoforms
+      description: Annotation file in GFF3/GTF format filtered for longest isoforms
       pattern: "*.{gff}"
   - versions:
       type: file
