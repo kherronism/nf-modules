@@ -21,17 +21,17 @@ A repository for hosting locally-developed [Nextflow DSL2](https://www.nextflow.
 
 The module files hosted in this repository define a set of processes for bioinformatic tools and locally developed scripts. This serves as a hub for sharing and adding common functionality across multiple pipelines in a modular fashion.
 
-- agat/spkeeplongestisoform
-- agat/spmanagefunctionalannotations
-- agat/spmanageids
+- agat/spkeeplongestisoform X
+- agat/spmanagefunctionalannotation X
+- agat/spmanageids X
 - braker3
 - eggnogmapper/emapper
 - macse
 - orthofinder
-- picard/collectalignmentsummarymetrics
+- picard/collectalignmentsummarymetrics (TO BE REMOVED - can use nf-core/collectmultiplemetrics instead)
 - repeatmodeler
 - repeatmasker
-- seqkit/fx2tab
+- seqkit/fx2tab - (CAN BE REMOVED - nf-core/fx2tab now exists)
 
 ## Using modules in this repository
 
