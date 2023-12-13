@@ -23,10 +23,11 @@ input:
   - fasta:
       type: file
       description: Genome assembly fasta
-      pattern: "*.{fasta,fa,fas,faa,fna}"
+      pattern: "*.{fasta, fa, fna}"
   - rnaseq_sets_ids:
       type: file
       description: IDs of RNA-seq datasets to be passed to --rnaseq_sets_ids
+      pattern: "*.txt"
   - rnaseq_sets_dirs:
       type: file
       description: Directories of RNA-seq datasets to be passed to --rnaseq_sets_dirs
@@ -37,7 +38,7 @@ input:
   - proteins:
       type: file
       description: Protein evidence to be passed to --proteins
-      pattern: "*.{fasta,fa,fas,faa}"
+      pattern: "*.{fasta, fa, faa}"
   - hintsfile:
       type: file
       description: Hints file to be passed to --hintsfile
@@ -46,23 +47,23 @@ output:
   - gtf:
       type: file
       description: Annotation file in GTF format as output by BRAKER3
-      pattern: "*.{gtf}"
+      pattern: "*.gtf"
   - cds:
       type: file
       description: Coding sequence file as output by BRAKER3
-      pattern: "*.{codingseq}"
+      pattern: "*.codingseq"
   - aa:
       type: file
       description: Protein sequence file as output by BRAKER3
-      pattern: "*.{aa}"
+      pattern: "*.aa"
   - hintsfile:
       type: file
       description: Hints file as output by BRAKER3
-      pattern: "*hintsfile.{gff}"
+      pattern: "*hintsfile.gff"
   - gff3:
       type: file
-      description: Annotation file in GFFS format
-      pattern: "*.{gff3}"
+      description: Annotation file in GFF format
+      pattern: "*.gff3"
   - versions:
       type: file
       description: File containing software versions
