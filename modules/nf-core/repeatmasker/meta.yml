@@ -1,0 +1,67 @@
+name: repeatmasker
+description: |
+  Screening DNA sequences for interspersed repeats and low complexity DNA sequences.
+keywords:
+  - genome
+  - annotation
+  - repeats
+tools:
+  - repeatmasker:
+      description: "RepeatMasker is a program that screens DNA sequences for interspersed
+      repeats and low complexity DNA sequences."
+      homepage: "https://www.repeatmasker.org/"
+      documentation: "https://www.repeatmasker.org/webrepeatmaskerhelp.html"
+      tool_dev_url: "https://github.com/rmhubley/RepeatMasker"
+      doi: "10.1073/pnas.1921046117"
+      licence: ["Open Software License v. 2.1"]
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - fasta:
+      type: file
+      description: Genome assembly
+      pattern: "*.{fasta,fa,fna}"
+  - lib:
+      type: file
+      description: Custom repeat library in FASTA format
+      patterns: "*.{fasta,fa,fna}"
+output:
+  - masked:
+      type: file
+      description: Reference assembly with repeats masked
+      pattern: "*.masked"
+  - tbl:
+      type: file
+      description: Summary table of the repeat elements identified
+      pattern: "*.tbl"
+  - out:
+      type: file
+      description: Table of all repeat regions identified and how "good" the match is to the repeat in the library
+      pattern: "*.out"
+  - out_gff:
+      type: file
+      description: Annotation file in GFF format
+      pattern: "*.out.gff"
+  - out_xm:
+      type: file
+      description: Annotation file in cross_match/SWAT format
+      pattern: "*.out.xm"
+  - fasta_cat_gz:
+      type: file
+      description: Compressed FASTA file containing the repeat library
+      pattern: "*.cat.gz"
+  - alignment:
+      type: file
+      description: Alignments of repeats to query sequence in cross_match/SWAT format
+      pattern: "*.align"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+authors:
+  - "@kherronism"
+maintainers:
+  - "@kherronism"
