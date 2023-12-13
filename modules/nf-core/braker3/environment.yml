@@ -1,0 +1,7 @@
+name: braker3
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - bioconda::braker3=3.0.6
